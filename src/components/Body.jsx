@@ -7,10 +7,12 @@ const Body = () => {
     <div>
       <NavBar/>
        {/* child routes render over */}
-      <Outlet/>
+       
+      <Outlet />
+     
       <Footer/>
     </div>
   )
 }
 
-export default Body
+export default Body;
