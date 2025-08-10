@@ -8,8 +8,8 @@ const userSlice = createSlice({
         },
         removeUser: () =>{
             return null;
-        }
-    }
+        },
+    },
 
 });
 export const { addUser, removeUser } = userSlice.actions;
