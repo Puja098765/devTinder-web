@@ -3,6 +3,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { BASE_URL } from '../utils/constants';
 import { addRequests, removeRequest } from '../utils/requestSlice';
 import axios from 'axios';
+// import { addConnections } from '../utils/connectionSlice';
 
 const Requests = () => {
     const requests = useSelector((store)=> store.requests);
@@ -12,6 +13,10 @@ const Requests = () => {
       try {
       await axios.post(BASE_URL + "/request/review/" + status + "/" + _id, {}, { withCredentials: true});
       dispatch(removeRequest(_id));
+      // if(status === "accepted"){
+      //  https://github.com/akshaymarch7/devTinder-web/tree/main/src/utils const res = await axios.get(BASE_URL + "/user/connections", {withCredentials:true});
+      //   dispatch(addConnections(res.data.data));
+      // }
       } catch (err) {
           console.log(err);
       }
@@ -33,6 +38,7 @@ const Requests = () => {
     }, []);
     
 if (!requests) return null;
+
 if (requests.length === 0) return <h1 className="flex justify-center my-10"> No Requests Found</h1>;
 
   return (

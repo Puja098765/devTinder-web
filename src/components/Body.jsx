@@ -28,7 +28,8 @@ const Body = () => {
 
   useEffect(()=>{
      fetchUser();
-  },[]);
+  }, []);
+
   return (
     <div>
       <NavBar/>
@@ -36,7 +37,7 @@ const Body = () => {
        <Outlet />
       <Footer/>
     </div>
-  )
-}
+  );
+};
 
 export default Body;

@@ -11,7 +11,10 @@ const Connections = () => {
 const fetchConnections = async () => {
     try {
         const res = await axios.get(BASE_URL + "/user/connections",{withCredentials:true,});
-        dispatch(addConnections(res.data.data));
+         // Filter out null values before updating Redux
+    const filteredConnections = (res.data.data || []).filter(conn => conn);
+    dispatch(addConnections(filteredConnections));
+        // dispatch(addConnections(res.data.data));
     } catch (err) {
         console.log(err);
     }
@@ -21,7 +24,7 @@ useEffect(()=>{
     fetchConnections();
 },[]);
 
-if (!connections) return null;
+if (!connections) return ;
 if (connections.length === 0) return <h1> No Connections Found</h1>;
 
   return (
